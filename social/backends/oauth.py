@@ -95,7 +95,7 @@ class OAuthAuth(BaseAuth):
         """Build redirect with redirect_state parameter."""
         uri = self.redirect_uri
         if self.REDIRECT_STATE and state:
-            uri = url_add_parameters(uri, {'redirect_state': state})
+            uri = url_add_parameters(uri, {'state': state})
         return uri
 
     def get_scope(self):
