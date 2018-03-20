@@ -95,7 +95,7 @@ class OAuthAuth(BaseAuth):
         """Build redirect with redirect_state parameter."""
         uri = self.redirect_uri
         if self.REDIRECT_STATE and state:
-            uri = url_add_parameters(uri, {'state': state})
+            uri = url_add_parameters(uri, {'redirect_state': state})
         return uri
 
     def get_scope(self):
@@ -312,8 +312,8 @@ class BaseOAuth2(OAuthAuth):
     REFRESH_TOKEN_URL = None
     REFRESH_TOKEN_METHOD = 'POST'
     RESPONSE_TYPE = 'code'
-    REDIRECT_STATE = True
-    STATE_PARAMETER = True
+    REDIRECT_STATE = False
+    STATE_PARAMETER = False
 
     def auth_params(self, state=None):
         client_id, client_secret = self.get_key_and_secret()
